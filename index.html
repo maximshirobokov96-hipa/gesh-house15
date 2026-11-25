@@ -170,7 +170,6 @@
   }
   .copied.show { opacity: 1; transform: scale(1); }
 
-  /* НОВАЯ КНОПКА С ССЫЛКОЙ НА 2ГИС */
   .map-btn {
     display: flex;
     align-items: center;
@@ -261,7 +260,9 @@
     <span class="badge">Геш Хаус Мьюзик × Сыроварня</span>
 
     <h1>Ваш промокод<br>на 15% скидку</h1>
-    <p class="subtitle">Для участников вечеринки в Шерегеше.<br>Нажмите на код, чтобы скопировать.</p>
+    
+    <!-- ОБНОВЛЕННЫЙ ПОДЗАГОЛОВОК -->
+    <p class="subtitle">Для участников вечеринки «Геш Хаус Мьюзик».<br>Нажмите на код, чтобы скопировать.</p>
 
     <div class="promo-box" id="promoBox" onclick="copyPromo()">
       <div class="promo-label">Промокод</div>
@@ -270,9 +271,7 @@
       <div class="copied" id="copiedMsg">✓ Скопировано!</div>
     </div>
 
-    <!-- Кнопка с ссылкой на 2ГИС -->
     <a href="https://2gis.ru/sheregesh/geo/70000001105028652/87.966175,52.948352?inv_by=308d522c9b9b45189ef0dd16a85bccfa&inv_ts=1795579983" target="_blank" rel="noopener noreferrer" class="map-btn">
-      <!-- Иконка метки -->
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z"/>
       </svg>
@@ -323,5 +322,3 @@
 </script>
 </body>
 </html>
-
-
