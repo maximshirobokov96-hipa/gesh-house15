@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ФОНДЮ15 — скидка 15% в Сыроварне</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gesh-orange: #FF5A00;
+    --gesh-black: #111111;
+    --text-light: #FFFFFF;
+    --text-muted: rgba(255, 255, 255, 0.6);
+  }
+
+  * { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Roboto', sans-serif; 
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: var(--text-light);
+    padding: 20px;
+    overflow-x: hidden;
+  }
+
+  body::before, body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 90, 0, 0.15), transparent 70%);
+    pointer-events: none;
+  }
+  body::before { width: 500px; height: 500px; top: -150px; left: -150px; }
+  body::after  { width: 400px; height: 400px; bottom: -120px; right: -120px; }
+
+  .card {
+    position: relative;
+    background: rgba(17, 17, 17, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 90, 0, 0.3);
+    border-radius: 28px;
+    padding: 40px;
+    max-width: 520px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
+                0 0 60px rgba(255, 90, 0, 0.1);
+    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(40px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* Анимированный сыр */
+  .cheese-emoji {
+    font-size: 56px;
+    display: block;
+    margin-bottom: 16px;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+  }
+
+  .logo-container {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--gesh-black);
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .logo-container img {
+    max-width: 180px;
+    height: auto;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gesh-orange);
+    border: 1px solid rgba(255, 90, 0, 0.5);
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    font-weight: 700;
+    background: rgba(255, 90, 0, 0.1);
+  }
+
+  h1 {
+    font-size: clamp(28px, 6vw, 40px);
+    line-height: 1.2;
+    font-weight: 900;
+    margin-bottom: 12px;
+    background: linear-gradient(90deg, #FFFFFF 0%, var(--gesh-orange) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .promo-box {
+    position: relative;
+    background: linear-gradient(135deg, var(--gesh-orange), #E64A00);
+    border-radius: 18px;
+    padding: 24px;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 10px 30px rgba(255, 90, 0, 0.3);
+    user-select: none;
+  }
+
+  .promo-box:hover  { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(255, 90, 0, 0.5); }
+  .promo-box:active { transform: scale(0.98); }
+
+  .promo-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(17, 17, 17, 0.7);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .promo-code {
+    font-size: clamp(32px, 8vw, 46px);
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: var(--gesh-black);
+  }
+
+  .copy-hint {
+    font-size: 12px;
+    color: rgba(17, 17, 17, 0.6);
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  .copied {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2ecc71;
+    border-radius: 18px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+  .copied.show { opacity: 1; transform: scale(1); }
+
+  .details {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 24px 20px;
+    border-radius: 12px;
+    border-left: 3px solid var(--gesh-orange);
+  }
+
+  .detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .detail-row span:first-child {
+    font-size: 20px;
+    flex-shrink: 0;
+    line-height: 1.2;
+  }
+
+  .footer-note {
+    margin-top: 32px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .footer-note strong { color: var(--text-light); font-weight: 700; }
+
+  .date {
+    color: var(--gesh-orange);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    
+    <!-- Анимированный сыр -->
+    <span class="cheese-emoji">🧀</span>
+
+    <div class="logo-container">
+      <img src="logo.png" alt="Ресторан Сыроварня">
+    </div>
+
+    <span class="badge">Геш Хаус Мьюзик × Сыроварня</span>
+
+    <h1>Ваш промокод<br>на 15% скидку</h1>
+    <p class="subtitle">Для участников вечеринки в Шерегеше.<br>Нажмите на код, чтобы скопировать.</p>
+
+    <div class="promo-box" id="promoBox" onclick="copyPromo()">
+      <div class="promo-label">Промокод</div>
+      <div class="promo-code">ФОНДЮ15</div>
+      <div class="copy-hint">👆 нажмите, чтобы скопировать</div>
+      <div class="copied" id="copiedMsg">✓ Скопировано!</div>
+    </div>
+
+    <div class="details">
+      <div class="detail-row"><span>📍</span><span>Ресторан «Сыроварня»</span></div>
+      <div class="detail-row"><span>🕒</span><span>Действует для участников вечеринки «Геш Хаус Мьюзик»</span></div>
+      <div class="detail-row"><span>🧾</span><span>Назовите код на кассе или покажите экран</span></div>
+    </div>
+
+    <p class="footer-note">
+      Скидка <strong>15%</strong> на весь ассортимент сыров и блюд.<br>
+      Не суммируется с другими акциями.<br>
+      Срок действия — <span class="date">до 18 декабря</span>.
+    </p>
+  </div>
+
+<script>
+  function copyPromo() {
+    const code = 'ФОНДЮ15';
+    const msg  = document.getElementById('copiedMsg');
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(showCopied).catch(fallbackCopy);
+    } else {
+      fallbackCopy();
+    }
+
+    function fallbackCopy() {
+      const ta = document.createElement('textarea');
+      ta.value = code;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showCopied(); }
+      catch (e) { /* тихо игнорируем */ }
+      document.body.removeChild(ta);
+    }
+
+    function showCopied() {
+      msg.classList.add('show');
+      setTimeout(() => msg.classList.remove('show'), 1600);
+    }
+  }
+</script>
+</body>
+</html>
